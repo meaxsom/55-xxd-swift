@@ -75,3 +75,17 @@ Basically dump some input file out as "hex" like `xxd` does
 - also got to be a better way to conver a byte into a char for concat into a string. I do need to do that one byte at a time for printable character reasons, but that's a lot of iterating
 - Basically feeling like it works but is sub optimal - although the examples I've looked at basically do what the codes doing. Who knows
 
+## Step 2
+
+This step is about supporting the -e ([little-endian](https://en.wikipedia.org/wiki/Endianness)) flag and -g (group) option
+
+- `ArgumentParser` library should come in handy here. Probably use some of the more specific syntax
+- Grouping should already be done through the "chunking" call
+- I'll need to come up with a strategy for converting to the `[UInt8]` chunks by swapping around bytes based on the chunk size
+    - will also need to validate that the "group" is divisible by 2 if the endian option is used
+
+### Notes
+- added flags and options to the command line to handle the input
+- the grouping was pretty easy since I already had the chunking figured out
+- ended up writing a `toLittleEndian()` extension for `[UInt8]` and added a if statement to handle the flag
+- 
