@@ -63,4 +63,19 @@ final class xxdTest: XCTestCase {
         let theBytes = xxdTest.kData.hexaBytes
         XCTAssertEqual(String(theBytes), xxdTest.kAsciiData)
     }
+    
+    func testLittleEndian() throws {
+        let theBytes = xxdTest.kData.hexaBytes
+        var theGroups = theBytes.chunked(into: 2)
+        
+        XCTAssertEqual(theGroups.count, 8)
+        XCTAssertEqual(theGroups[0].toLittleEndian().toHexString(), "0178")
+        XCTAssertEqual(theGroups[1].toLittleEndian().toHexString(), "d0ed")
+        XCTAssertEqual(theGroups[2].toLittleEndian().toHexString(), "09b1")
+        XCTAssertEqual(theGroups[7].toLittleEndian().toHexString(), "c35f")
+
+        theGroups = theBytes.chunked(into: 4)
+        XCTAssertEqual(theGroups[0].toLittleEndian().toHexString(), "d0ed0178")
+        XCTAssertEqual(theGroups[1].toLittleEndian().toHexString(), "200009b1")
+    }
 }
