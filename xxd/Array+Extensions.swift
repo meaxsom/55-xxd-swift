@@ -7,10 +7,19 @@
 
 import Foundation
 
-// takes an array of UInt8 elements, converts each element to hex and then concats all of them together
 extension Array where Element == UInt8 {
-    func toHexString() -> String {
+    // takes an array of UInt8 elements, converts each element to hex and then concats all of them together into a string
+   func toHexString() -> String {
         return self.map { String(format: "%02x", $0) }.joined()
+    }
+    
+    // convert a array of UInt8s to little endian format
+    func toLittleEndian() -> [UInt8] {
+        var result = [UInt8](repeating: 0, count: self.count)
+        for (index, byte) in self.enumerated() {
+            result[self.count - 1 - index] = byte
+        }
+        return result
     }
 }
 
