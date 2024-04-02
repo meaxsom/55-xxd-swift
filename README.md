@@ -60,5 +60,18 @@ Basically dump some input file out as "hex" like `xxd` does
     - the hex output - 16 bytes long in a default of 4 "octets"
     - the ascii output - also 16 bytes but in char form. anything outside of printable chars is a `.`
 
+### Notes
+- Opted to read the file in "chunks" of 16 x UInt8 using an extension to FileManager
+- For each chunk, generate a String representation from the printable characters - as an extention to the String type
+- Also for each chunk - divide into an array of arrays represeting the desired octet output "grouping". This is what we'll need in Step 2, but got that out of the way in this step. Again, used an extension this time with the Array type
+- For those grouped items, generate a hex representation for outut. Leveraged an extension in Array type
+- Keep track of the file offset and output that as hex
 
+- learned a lot about using map & reduce functions in iterating over the array of bytes and array of arrays!
+
+- Feels like there is too much struct creation going on for moving bytes around. 
+    - need some way to observe memory pressure/use
+
+- also got to be a better way to conver a byte into a char for concat into a string. I do need to do that one byte at a time for printable character reasons, but that's a lot of iterating
+- Basically feeling like it works but is sub optimal - although the examples I've looked at basically do what the codes doing. Who knows
 

@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39EE0DFB2BBA38F00005A3EE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0DFA2BBA38F00005A3EE /* main.swift */; };
+		392CD4BC2BBB883000EF5C0F /* FileManager+FileReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CD4BB2BBB883000EF5C0F /* FileManager+FileReading.swift */; };
+		396DFB0E2BBC4C100039DB26 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */; };
+		396DFB102BBC62410039DB26 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0F2BBC62410039DB26 /* String+Extensions.swift */; };
+		396DFB112BBC75490039DB26 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */; };
+		396DFB122BBC95990039DB26 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0F2BBC62410039DB26 /* String+Extensions.swift */; };
+		39EE0E132BBA397A0005A3EE /* xxdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E122BBA397A0005A3EE /* xxdTest.swift */; };
+		39EE0E1A2BBA3A8C0005A3EE /* SwiftXXD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E192BBA3A8C0005A3EE /* SwiftXXD.swift */; };
+		39EE0E1D2BBA3ACE0005A3EE /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,12 +30,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		392CD4BB2BBB883000EF5C0F /* FileManager+FileReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+FileReading.swift"; sourceTree = "<group>"; };
+		396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		396DFB0F2BBC62410039DB26 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		39BAED672BBA3F3F0042270F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		39EE0DF72BBA38F00005A3EE /* xxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xxd; sourceTree = BUILT_PRODUCTS_DIR; };
-		39EE0DFA2BBA38F00005A3EE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		39EE0E102BBA397A0005A3EE /* xxdTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xxdTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39EE0E122BBA397A0005A3EE /* xxdTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xxdTest.swift; sourceTree = "<group>"; };
+		39EE0E192BBA3A8C0005A3EE /* SwiftXXD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftXXD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		39EE0DF42BBA38F00005A3EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39EE0E1D2BBA3ACE0005A3EE /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EE0E0D2BBA397A0005A3EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				39EE0DF92BBA38F00005A3EE /* xxd */,
+				39EE0E112BBA397A0005A3EE /* xxdTest */,
 				39EE0DF82BBA38F00005A3EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				39EE0DF72BBA38F00005A3EE /* xxd */,
+				39EE0E102BBA397A0005A3EE /* xxdTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +80,21 @@
 		39EE0DF92BBA38F00005A3EE /* xxd */ = {
 			isa = PBXGroup;
 			children = (
-				39EE0DFA2BBA38F00005A3EE /* main.swift */,
+				39BAED672BBA3F3F0042270F /* README.md */,
+				39EE0E192BBA3A8C0005A3EE /* SwiftXXD.swift */,
+				392CD4BB2BBB883000EF5C0F /* FileManager+FileReading.swift */,
+				396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */,
+				396DFB0F2BBC62410039DB26 /* String+Extensions.swift */,
 			);
 			path = xxd;
+			sourceTree = "<group>";
+		};
+		39EE0E112BBA397A0005A3EE /* xxdTest */ = {
+			isa = PBXGroup;
+			children = (
+				39EE0E122BBA397A0005A3EE /* xxdTest.swift */,
+			);
+			path = xxdTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +113,29 @@
 			dependencies = (
 			);
 			name = xxd;
+			packageProductDependencies = (
+				39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */,
+			);
 			productName = xxd;
 			productReference = 39EE0DF72BBA38F00005A3EE /* xxd */;
 			productType = "com.apple.product-type.tool";
+		};
+		39EE0E0F2BBA397A0005A3EE /* xxdTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39EE0E142BBA397A0005A3EE /* Build configuration list for PBXNativeTarget "xxdTest" */;
+			buildPhases = (
+				39EE0E0C2BBA397A0005A3EE /* Sources */,
+				39EE0E0D2BBA397A0005A3EE /* Frameworks */,
+				39EE0E0E2BBA397A0005A3EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = xxdTest;
+			productName = xxdTest;
+			productReference = 39EE0E102BBA397A0005A3EE /* xxdTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +150,9 @@
 					39EE0DF62BBA38F00005A3EE = {
 						CreatedOnToolsVersion = 15.3;
 					};
+					39EE0E0F2BBA397A0005A3EE = {
+						CreatedOnToolsVersion = 15.3;
+					};
 				};
 			};
 			buildConfigurationList = 39EE0DF22BBA38F00005A3EE /* Build configuration list for PBXProject "xxd" */;
@@ -106,21 +164,48 @@
 				Base,
 			);
 			mainGroup = 39EE0DEE2BBA38F00005A3EE;
+			packageReferences = (
+				39EE0E1B2BBA3ACE0005A3EE /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 39EE0DF82BBA38F00005A3EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				39EE0DF62BBA38F00005A3EE /* xxd */,
+				39EE0E0F2BBA397A0005A3EE /* xxdTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39EE0E0E2BBA397A0005A3EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39EE0DF32BBA38F00005A3EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39EE0DFB2BBA38F00005A3EE /* main.swift in Sources */,
+				392CD4BC2BBB883000EF5C0F /* FileManager+FileReading.swift in Sources */,
+				396DFB0E2BBC4C100039DB26 /* Array+Extensions.swift in Sources */,
+				39EE0E1A2BBA3A8C0005A3EE /* SwiftXXD.swift in Sources */,
+				396DFB102BBC62410039DB26 /* String+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39EE0E0C2BBA397A0005A3EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39EE0E132BBA397A0005A3EE /* xxdTest.swift in Sources */,
+				396DFB122BBC95990039DB26 /* String+Extensions.swift in Sources */,
+				396DFB112BBC75490039DB26 /* Array+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +352,36 @@
 			};
 			name = Release;
 		};
+		39EE0E152BBA397A0005A3EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MGJ7T5565Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruecorner.xxdTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		39EE0E162BBA397A0005A3EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MGJ7T5565Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruecorner.xxdTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -288,7 +403,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		39EE0E142BBA397A0005A3EE /* Build configuration list for PBXNativeTarget "xxdTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39EE0E152BBA397A0005A3EE /* Debug */,
+				39EE0E162BBA397A0005A3EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		39EE0E1B2BBA3ACE0005A3EE /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39EE0E1B2BBA3ACE0005A3EE /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 39EE0DEF2BBA38F00005A3EE /* Project object */;
 }
