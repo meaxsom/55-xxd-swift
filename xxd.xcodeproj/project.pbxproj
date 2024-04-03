@@ -12,6 +12,9 @@
 		396DFB102BBC62410039DB26 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0F2BBC62410039DB26 /* String+Extensions.swift */; };
 		396DFB112BBC75490039DB26 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */; };
 		396DFB122BBC95990039DB26 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB0F2BBC62410039DB26 /* String+Extensions.swift */; };
+		396DFB142BBCD19F0039DB26 /* OctetCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB132BBCD19F0039DB26 /* OctetCounter.swift */; };
+		396DFB162BBCD9B60039DB26 /* OctetCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB152BBCD9B60039DB26 /* OctetCounterTest.swift */; };
+		396DFB172BBCD9C70039DB26 /* OctetCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB132BBCD19F0039DB26 /* OctetCounter.swift */; };
 		39EE0E132BBA397A0005A3EE /* xxdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E122BBA397A0005A3EE /* xxdTest.swift */; };
 		39EE0E1A2BBA3A8C0005A3EE /* SwiftXXD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E192BBA3A8C0005A3EE /* SwiftXXD.swift */; };
 		39EE0E1D2BBA3ACE0005A3EE /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */; };
@@ -33,6 +36,8 @@
 		392CD4BB2BBB883000EF5C0F /* FileManager+FileReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+FileReading.swift"; sourceTree = "<group>"; };
 		396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		396DFB0F2BBC62410039DB26 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		396DFB132BBCD19F0039DB26 /* OctetCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctetCounter.swift; sourceTree = "<group>"; };
+		396DFB152BBCD9B60039DB26 /* OctetCounterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctetCounterTest.swift; sourceTree = "<group>"; };
 		39BAED672BBA3F3F0042270F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		39EE0DF72BBA38F00005A3EE /* xxd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xxd; sourceTree = BUILT_PRODUCTS_DIR; };
 		39EE0E102BBA397A0005A3EE /* xxdTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xxdTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +90,7 @@
 				392CD4BB2BBB883000EF5C0F /* FileManager+FileReading.swift */,
 				396DFB0D2BBC4C100039DB26 /* Array+Extensions.swift */,
 				396DFB0F2BBC62410039DB26 /* String+Extensions.swift */,
+				396DFB132BBCD19F0039DB26 /* OctetCounter.swift */,
 			);
 			path = xxd;
 			sourceTree = "<group>";
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				39EE0E122BBA397A0005A3EE /* xxdTest.swift */,
+				396DFB152BBCD9B60039DB26 /* OctetCounterTest.swift */,
 			);
 			path = xxdTest;
 			sourceTree = "<group>";
@@ -196,6 +203,7 @@
 				396DFB0E2BBC4C100039DB26 /* Array+Extensions.swift in Sources */,
 				39EE0E1A2BBA3A8C0005A3EE /* SwiftXXD.swift in Sources */,
 				396DFB102BBC62410039DB26 /* String+Extensions.swift in Sources */,
+				396DFB142BBCD19F0039DB26 /* OctetCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396DFB162BBCD9B60039DB26 /* OctetCounterTest.swift in Sources */,
 				39EE0E132BBA397A0005A3EE /* xxdTest.swift in Sources */,
 				396DFB122BBC95990039DB26 /* String+Extensions.swift in Sources */,
 				396DFB112BBC75490039DB26 /* Array+Extensions.swift in Sources */,
+				396DFB172BBCD9C70039DB26 /* OctetCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

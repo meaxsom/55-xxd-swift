@@ -89,3 +89,10 @@ This step is about supporting the -e ([little-endian](https://en.wikipedia.org/w
 - the grouping was pretty easy since I already had the chunking figured out
 - ended up writing a `toLittleEndian()` extension for `[UInt8]` and added a if statement to handle the flag
 - 
+
+## Step 3
+
+> support the command line options to set the number of octets to be written out and the number of columns to print per line. These are the -l and -c flags [if] you want to explore the valid settings in the man entry.
+
+- Added `OctetCounter` to help with octet bookkeeping
+    - need to figure out how to pad for "length"
