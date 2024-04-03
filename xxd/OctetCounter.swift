@@ -12,21 +12,31 @@ import Foundation
 
 struct OctetCounter {
     public static let kNoLength = -1
-    public static let kDefaultOctetCount = 16
+    public static let kDefaultOctetSize = 16
         
     private var maxOctetCount : Int = OctetCounter.kNoLength
     private var octetCount : Int = 0
+    private var _octextSize : Int = OctetCounter.kDefaultOctetSize
     
-    init(max inMaxOctet: Int) {
-        self.maxOctetCount = inMaxOctet
+    public init(max inMaxOctets: Int) {
+        self.maxOctetCount = inMaxOctets
     }
 
+    public init(max inMaxOctets: Int, size inOctetSize: Int) {
+        self.maxOctetCount = inMaxOctets
+        self._octextSize = inOctetSize
+    }
+
+    public var octextSize: Int {
+        return self._octextSize
+    }
+    
     public mutating func incrementOctetsRead(by inAmount: Int) {
         self.octetCount += inAmount;
     }
     
     public func octetsToRead() -> Int {
-        var result = OctetCounter.kDefaultOctetCount
+        var result = self._octextSize
         if (maxOctetCount != OctetCounter.kNoLength) {
             if (octetCount < maxOctetCount) {
                 result = maxOctetCount - octetCount > result ? result : maxOctetCount - octetCount
