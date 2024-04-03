@@ -40,7 +40,7 @@ struct SwiftXXD : ParsableCommand {
     func run() throws {
         
         // initialize our
-        var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength, size: cols ?? 16)
+        var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength, size: cols ?? OctetCounter.kDefaultOctetSize)
 
         // little endian format has a different default group size than big-endian. Set accordingly and check for incompatable values
         var theGroupSize : Int
@@ -87,7 +87,7 @@ struct SwiftXXD : ParsableCommand {
                 let theView = String(values)
                 
                 // create the offset value
-                let theOffset = String(format: "%08X", fileOffset)
+                let theOffset = String(format: "%08x", fileOffset)
                 
                 // create the line of hex data in the approperiate chunks in the correct format
                 let theLine = endian
