@@ -15,9 +15,9 @@
 		396DFB142BBCD19F0039DB26 /* OctetCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB132BBCD19F0039DB26 /* OctetCounter.swift */; };
 		396DFB162BBCD9B60039DB26 /* OctetCounterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB152BBCD9B60039DB26 /* OctetCounterTest.swift */; };
 		396DFB172BBCD9C70039DB26 /* OctetCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DFB132BBCD19F0039DB26 /* OctetCounter.swift */; };
+		396DFB192BBCEE640039DB26 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 396DFB182BBCEE640039DB26 /* ArgumentParser */; };
 		39EE0E132BBA397A0005A3EE /* xxdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E122BBA397A0005A3EE /* xxdTest.swift */; };
 		39EE0E1A2BBA3A8C0005A3EE /* SwiftXXD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EE0E192BBA3A8C0005A3EE /* SwiftXXD.swift */; };
-		39EE0E1D2BBA3ACE0005A3EE /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39EE0E1D2BBA3ACE0005A3EE /* ArgumentParser in Frameworks */,
+				396DFB192BBCEE640039DB26 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			);
 			name = xxd;
 			packageProductDependencies = (
-				39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */,
+				396DFB182BBCEE640039DB26 /* ArgumentParser */,
 			);
 			productName = xxd;
 			productReference = 39EE0DF72BBA38F00005A3EE /* xxd */;
@@ -436,7 +436,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		39EE0E1C2BBA3ACE0005A3EE /* ArgumentParser */ = {
+		396DFB182BBCEE640039DB26 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39EE0E1B2BBA3ACE0005A3EE /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
