@@ -11,18 +11,27 @@ import ArgumentParser
 
 @main
 struct SwiftXXD : ParsableCommand {
-    static let kDefaultDataSize = 16
-    
     static let kDefaultGroupSize = 2
     static let kDefaultEndianGroupSize = 4
 
     static let kDefaultFileOffset : UInt64 = 0
-    static let kDefaultDataIncrementSize : UInt64 = UInt64(kDefaultDataSize)
+    static let kDefaultDataIncrementSize : UInt64 = UInt64(OctetCounter.kDefaultOctetCount)
 
+    // file to process
     @Argument var filename: String
+    
+    // size of the groups
     @Option(name: .shortAndLong)
     var groupsize : Int?
     
+    // number of columns to write
+    @Option(name: .shortAndLong)
+    var cols : Int?
+
+    // number of octets to write out
+    @Option(name: .shortAndLong)
+    var len : Int?
+
     @Flag(name: .short)
     var endian : Bool = false
 
@@ -43,8 +52,11 @@ struct SwiftXXD : ParsableCommand {
             theGroupSize = groupsize ?? SwiftXXD.kDefaultGroupSize
             
             // ensure that the group size doesn't exceed the max. xxd just goes on by setting it to the max
-            theGroupSize = theGroupSize > SwiftXXD.kDefaultDataSize ? SwiftXXD.kDefaultDataSize : theGroupSize
+            theGroupSize = theGroupSize > OctetCounter.kDefaultOctetCount ? OctetCounter.kDefaultOctetCount : theGroupSize
         }
+        
+        // initialize our
+        var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength)
         
         // start reading from the file..
         do {
@@ -56,8 +68,12 @@ struct SwiftXXD : ParsableCommand {
                 try fileHandle.seek(toOffset: fileOffset)
             }
             
+            var theOctetsToRead = theOctetCounter.octetsToRead()
+            
             // read in the next chunk
-            while let values = fileHandle.readUInt8s(ofSize: SwiftXXD.kDefaultDataSize) {
+            while let values = fileHandle.readUInt8s(ofSize: theOctetsToRead) {
+                theOctetCounter.incrementOctetsRead(by: theOctetsToRead)
+                
                 // create the ASCII view
                 let theView = String(values)
                 
@@ -72,6 +88,11 @@ struct SwiftXXD : ParsableCommand {
                 // write all the data out in xxd format
                 print("\(theOffset): \(theLine)  \(theView)")
                 fileOffset += SwiftXXD.kDefaultDataIncrementSize
+                
+                theOctetsToRead = theOctetCounter.octetsToRead()
+                if (theOctetsToRead == 0) {
+                    break
+                }
             }
             
             fileHandle.closeFile()
