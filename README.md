@@ -94,5 +94,15 @@ This step is about supporting the -e ([little-endian](https://en.wikipedia.org/w
 
 > support the command line options to set the number of octets to be written out and the number of columns to print per line. These are the -l and -c flags [if] you want to explore the valid settings in the man entry.
 
-- Added `OctetCounter` to help with octet bookkeeping
-    - need to figure out how to pad for "length"
+- the "len" option is just how many total octets to read from the file
+    - Added `OctetCounter` to help with octet bookkeeping
+    - Adding padding to the hex output so incomplete lines will line up
+
+- the "col" option is how many octets to read at once.
+    - up to this point, 16's been the default column size so that needs to become flexible
+    - `OctetCounter` now controls the size of the read, which is the number of "cols"
+
+### Notes
+- again, given the existing structure, this wasn't all that much of a change. Mainly rerouting some constants already in use.
+- consolidating the logic in the `OctetCounter` make it pretty easy
+- not sure I have the logic right between `-g`, `-e` and `-c` but the standard `xxd` seems to ignore `-g` when `-c` is in use
