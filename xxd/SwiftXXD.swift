@@ -15,7 +15,6 @@ struct SwiftXXD : ParsableCommand {
     static let kDefaultEndianGroupSize = 4
 
     static let kDefaultFileOffset : UInt64 = 0
-    static let kDefaultDataIncrementSize : UInt64 = UInt64(OctetCounter.kDefaultOctetCount)
 
     // file to process
     @Argument var filename: String
@@ -38,6 +37,9 @@ struct SwiftXXD : ParsableCommand {
 
     func run() throws {
         
+        // initialize our
+        var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength, size: cols ?? 16)
+
         // little endian format has a different default group size than big-endian. Set accordingly and check for incompatable values
         var theGroupSize : Int
         if (endian) {
@@ -52,17 +54,16 @@ struct SwiftXXD : ParsableCommand {
             theGroupSize = groupsize ?? SwiftXXD.kDefaultGroupSize
             
             // ensure that the group size doesn't exceed the max. xxd just goes on by setting it to the max
-            theGroupSize = theGroupSize > OctetCounter.kDefaultOctetCount ? OctetCounter.kDefaultOctetCount : theGroupSize
+            theGroupSize = theGroupSize > theOctetCounter.octextSize ? theOctetCounter.octextSize : theGroupSize
         }
         
         // calculate the length "hex" field in terms of characters so we can pad if necessary
-        var theHexFieldLen = 32 + (OctetCounter.kDefaultOctetCount/theGroupSize)
-        if (OctetCounter.kDefaultOctetCount % theGroupSize == 0) {
+        var theHexFieldLen = (theOctetCounter.octextSize * 2) + (theOctetCounter.octextSize/theGroupSize)
+        
+        if (theOctetCounter.octextSize % theGroupSize == 0) {
             theHexFieldLen -= 1
         }
         
-        // initialize our
-        var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength)
         
         // start reading from the file..
         do {
@@ -94,7 +95,7 @@ struct SwiftXXD : ParsableCommand {
                 // write all the data out in xxd format
                 print("\(theOffset): \(theLine.padding(toLength: theHexFieldLen, withPad: " ", startingAt: 0))  \(theView)")
                 
-                fileOffset += SwiftXXD.kDefaultDataIncrementSize
+                fileOffset += UInt64(theOctetCounter.octextSize)
                 
                 theOctetsToRead = theOctetCounter.octetsToRead()
                 if (theOctetsToRead == 0) {
