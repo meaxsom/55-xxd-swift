@@ -55,6 +55,12 @@ struct SwiftXXD : ParsableCommand {
             theGroupSize = theGroupSize > OctetCounter.kDefaultOctetCount ? OctetCounter.kDefaultOctetCount : theGroupSize
         }
         
+        // calculate the length "hex" field in terms of characters so we can pad if necessary
+        var theHexFieldLen = 32 + (OctetCounter.kDefaultOctetCount/theGroupSize)
+        if (OctetCounter.kDefaultOctetCount % theGroupSize == 0) {
+            theHexFieldLen -= 1
+        }
+        
         // initialize our
         var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength)
         
@@ -86,7 +92,8 @@ struct SwiftXXD : ParsableCommand {
                     : values.chunked(into: theGroupSize).map { $0.toHexString() }.joined(separator: " ")
 
                 // write all the data out in xxd format
-                print("\(theOffset): \(theLine)  \(theView)")
+                print("\(theOffset): \(theLine.padding(toLength: theHexFieldLen, withPad: " ", startingAt: 0))  \(theView)")
+                
                 fileOffset += SwiftXXD.kDefaultDataIncrementSize
                 
                 theOctetsToRead = theOctetCounter.octetsToRead()
