@@ -106,3 +106,13 @@ This step is about supporting the -e ([little-endian](https://en.wikipedia.org/w
 - again, given the existing structure, this wasn't all that much of a change. Mainly rerouting some constants already in use.
 - consolidating the logic in the `OctetCounter` make it pretty easy
 - not sure I have the logic right between `-g`, `-e` and `-c` but the standard `xxd` seems to ignore `-g` when `-c` is in use
+
+## Step 4
+
+> support the -s flag which allows us to seek to a specific byte offset in the file
+
+### Notes
+- This was easy as well. Just added the `@Option` and hooked it into the logic I already anticipated for seeking to a specific offest in the file to begin reading
+- It also appears that the `swift-argument-parser` got wonky in the build process. Had to readd it.
+
+
