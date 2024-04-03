@@ -14,7 +14,7 @@ struct SwiftXXD : ParsableCommand {
     static let kDefaultGroupSize = 2
     static let kDefaultEndianGroupSize = 4
 
-    static let kDefaultFileOffset : UInt64 = 0
+    static let kDefaultFileOffset = 0
 
     // file to process
     @Argument var filename: String
@@ -31,9 +31,11 @@ struct SwiftXXD : ParsableCommand {
     @Option(name: .shortAndLong)
     var len : Int?
 
+    @Option(name: .short)
+    var seek : Int?
+
     @Flag(name: .short)
     var endian : Bool = false
-
 
     func run() throws {
         
@@ -70,7 +72,7 @@ struct SwiftXXD : ParsableCommand {
             let fileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: filename))
             
             // assume we start at zero unless otherwise indicated
-            var fileOffset = SwiftXXD.kDefaultFileOffset
+            var fileOffset = UInt64(seek ?? Int(SwiftXXD.kDefaultFileOffset))
             if (fileOffset > 0) {
                 try fileHandle.seek(toOffset: fileOffset)
             }
