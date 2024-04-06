@@ -15,9 +15,6 @@ struct SwiftXXD : ParsableCommand {
     static let kDefaultEndianGroupSize = 4
 
     static let kDefaultFileOffset = 0
-
-    // file to process
-    @Argument var filename: String
     
     // size of the groups
     @Option(name: .shortAndLong)
@@ -33,12 +30,48 @@ struct SwiftXXD : ParsableCommand {
 
     @Option(name: .short)
     var seek : Int?
-
+    
     @Flag(name: .short)
     var endian : Bool = false
+    
+    @Flag(name: .shortAndLong)
+    var reverse: Bool = false
 
-    func run() throws {
+    // file to process
+    @Argument var filename: String
+
+    func run() throws  {
+        if (reverse) {
+            reverseFile()
+        } else {
+            dumpFile()
+        }
+    }
+    
+    func reverseFile() {
+        do {
+            let fileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: filename))
+            let regex = /^(.*?)\:\s+(.*?)\s{2,}.*$/
+
+            while let theLine = fileHandle.readLine() {
+                if let match = theLine.firstMatch(of: regex) {
+                    let theData = Data(String(match.2).replacingOccurrences(of: " ", with: "").hexaBytes)
+                    let _ = theData.withUnsafeBytes {
+                        write(STDOUT_FILENO, $0.baseAddress, theData.count)
+                    }
+                }
+            }
         
+            try fileHandle.close()
+
+        } catch {
+            print("Error reading file: \(error)")
+            MyLogger.log.error("\(error)")
+        }
+    }
+    
+    func dumpFile() {
+
         // initialize our
         var theOctetCounter = OctetCounter(max: len ?? OctetCounter.kNoLength, size: cols ?? OctetCounter.kDefaultOctetSize)
 
