@@ -115,4 +115,37 @@ This step is about supporting the -e ([little-endian](https://en.wikipedia.org/w
 - This was easy as well. Just added the `@Option` and hooked it into the logic I already anticipated for seeking to a specific offest in the file to begin reading
 - It also appears that the `swift-argument-parser` got wonky in the build process. Had to readd it.
 
+## Step 5
 
+> support the ability to revert a hex dump back to a binary file. This is the -r option.
+
+So:
+- Read in the file line at a time
+- for earch line:
+    - parse out what's between the line count and the ASCII field
+    - remove/trim any space - should be a hex string at this point
+    - convert the hex string to a series of bytes in an array
+        - this as part of the testing infrastructure!!
+    - write that out to standard out as binary(??)
+
+Might be easier than I though.. so regex (ya I know I have 2 problems now) and moving a testing extension into the main code.
+
+I may have to break off the main code into 2 function.. one for regular processing and one for reverse processsing
+
+### Notes
+
+- Mainly correct except I stumbled a bit figuring out how to write out a sequence of bytes. `print` doesn't work well w/binary data so I had to use `write` to `stdout`
+- Not impressed with the RegEx "builder" stuff. Way too wordy for my taste. I guess if you don't know regex it might be more helpful but w/30 years of regex behind me I wasn't going to do the builder pattern for what I can put in a string. This [converter](https://swiftregex.com) was kind of interesting.
+- Swift has a way to go with handling file I/O with simple things like reading a line of data. Should not be that hard.
+- Also not impressed with all the byte manipulation to/from UInt8s to various things. Swift might allow access to low level Bytes, but it doesn't make it easy.
+
+## Summary
+
+- Interesting project. I didn't know a lot about `xxd` but it's an interting utility.
+- Enjoyed writing a lot of what I needed as Swift `extension`.
+- Testing framework could be better
+- Command line processing could be better
+- File I/O could be better
+- The amount of abstraction/structure is staggering in Swift. Python was a lot easier as was Objective-C.
+- Getting compitant at Swift will take some work.
+- I'm sure a lot of this could be optimized but for now I'm calling #55 done!
