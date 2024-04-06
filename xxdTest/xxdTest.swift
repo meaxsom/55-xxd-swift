@@ -7,17 +7,6 @@
 
 import XCTest
 
-extension StringProtocol {
-    var hexaBytes: [UInt8] {
-        var startIndex = self.startIndex
-        return stride(from: 0, to: count, by: 2).compactMap { _ in
-            let endIndex = index(startIndex, offsetBy: 2, limitedBy: self.endIndex) ?? self.endIndex
-            defer { startIndex = endIndex }
-            return UInt8(self[startIndex..<endIndex], radix: 16)
-        }
-    }
-}
-
 final class xxdTest: XCTestCase {
     
     private static let kData = "7801edd0b10900201003407112cb5fc3"
